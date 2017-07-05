@@ -571,6 +571,12 @@
           "required": true
         },
         {
+          "name": "project",
+          "type": "String",
+          "info": "Project id.",
+          "required": true
+        },
+        {
           "name": "beforeSection",
           "type": "String",
           "info": "Insert the given section immediately before the section specified by this parameter.",
