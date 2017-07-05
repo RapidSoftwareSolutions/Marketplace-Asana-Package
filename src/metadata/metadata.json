@@ -174,16 +174,10 @@
         "required": true
       },
         {
-          "name": "projectId",
+          "name": "resource",
           "type": "String",
           "info": "A resource ID to subscribe to. The resource can be a task or project.",
-          "required": false
-        },
-        {
-          "name": "taskId",
-          "type": "String",
-          "info": "A resource ID to subscribe to. The resource can be a task or project.",
-          "required": false
+          "required": true
         },
         {
           "name": "sync",

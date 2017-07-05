@@ -5,7 +5,7 @@ $app->post('/api/Asana/getEvents', function ($request, $response) {
 
     $settings = $this->settings;
     $checkRequest = $this->validation;
-    $validateRes = $checkRequest->validate($request, ['accessToken']);
+    $validateRes = $checkRequest->validate($request, ['accessToken','resource']);
 
     if(!empty($validateRes) && isset($validateRes['callback']) && $validateRes['callback']=='error') {
         return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($validateRes);
@@ -14,16 +14,7 @@ $app->post('/api/Asana/getEvents', function ($request, $response) {
     }
 
     $accessToken = $post_data['args']['accessToken'];
-
-    if(!empty($post_data['args']['projectId'])){
-        $resource = $post_data['args']['projectId'];
-        $query_str = $settings['api_url'] . "project/$resource/events";
-    }
-
-    if(!empty($post_data['args']['taskId'])){
-        $resource = $post_data['args']['taskId'];
-        $query_str = $settings['api_url'] . "task/$resource/events";
-    }
+    $data['resource'] = $post_data['args']['resource'];
 
 
     $client = $this->httpClient;
@@ -31,10 +22,7 @@ $app->post('/api/Asana/getEvents', function ($request, $response) {
     if(!empty($post_data['args']['sync'])){
         $data['sync'] = $post_data['args']['sync'];
     }
-
-    echo $query_str;
-    die();
-
+    $query_str = $settings['api_url'] . "events";
     try {
 
         $resp = $client->get($query_str, [
