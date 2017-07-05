@@ -1,0 +1,1779 @@
+{
+  "package": "Asana",
+  "tagline": "Asana API",
+  "description": "Customize the Asana experience, leverage your data with the Asana API, and join a community of developers building with Asana.",
+  "image": "https://logo.clearbit.com/asana.com",
+  "repo": "https://github.com/RapidSoftwareSolutions/Marketplace-Asana-Package",
+  "keywords": [
+    "API",
+    "asana"
+  ],
+  "accounts": {
+    "domain": "asana.com",
+    "credentials": [
+      "accessToken"
+    ]
+  },
+  "blocks": [{
+    "name": "getSingleAttachment",
+    "description": "Returns the full record for a single attachment.",
+    "args": [{
+      "name": "accessToken",
+      "type": "credentials",
+      "info": "Your access token.",
+      "required": true
+    },
+      {
+        "name": "attachmentId",
+        "type": "String",
+        "info": "Globally unique identifier for the attachment.",
+        "required": true
+      }
+    ],
+    "callbacks": [{
+      "name": "error",
+      "info": "Error"
+    }, {
+      "name": "success",
+      "info": "Success"
+    }]
+  },
+    {
+      "name": "getAttachmentsOnTask",
+      "description": "Returns the compact records for all attachments on the task.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "taskId",
+          "type": "String",
+          "info": "Globally unique identifier for the task.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "uploadAttachmentToTask",
+      "description": "Returns the compact records for all attachments on the task.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "taskId",
+          "type": "String",
+          "info": "Globally unique identifier for the task.",
+          "required": true
+        },
+        {
+          "name": "file",
+          "type": "File",
+          "info": "Uploaded file",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getProjectCustomFieldsSettings",
+      "description": "Returns a list of all of the custom fields settings on a project, in compact form. Note that, as in all queries to collections which return compact representation, opt_fields and opt_expand can be used to include more data than is returned in the compact representation. See the getting started guide on input/output options for more information.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "projectId",
+          "type": "String",
+          "info": "The ID of the project for which to list custom field settings.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getCustomField",
+      "description": "Returns the complete definition of a custom field’s metadata.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "fieldId",
+          "type": "String",
+          "info": "Globally unique identifier for the custom field.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getAllCustomFields",
+      "description": "Returns a list of the compact representation of all of the custom fields in a workspace.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "workspace",
+          "type": "String",
+          "info": "The workspace or organization to find custom field definitions in.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getEvents",
+      "description": "Returns the full record for all events that have occurred since the sync token was created.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "projectId",
+          "type": "String",
+          "info": "A resource ID to subscribe to. The resource can be a task or project.",
+          "required": false
+        },
+        {
+          "name": "taskId",
+          "type": "String",
+          "info": "A resource ID to subscribe to. The resource can be a task or project.",
+          "required": false
+        },
+        {
+          "name": "sync",
+          "type": "String",
+          "info": "A sync token received from the last request, or none on first sync. Events will be returned from the point in time that the sync token was generated.",
+          "required": false
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "createProject",
+      "description": "Creates a new project in a workspace or team.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "workspace",
+          "type": "String",
+          "info": "The workspace or organization to create the project in.",
+          "required": true
+        },
+        {
+          "name": "team",
+          "type": "String",
+          "info": "If creating in an organization, the specific team to create the project in.",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "Name of the project",
+          "required": true
+        },
+        {
+          "name": "notes",
+          "type": "String",
+          "info": "Project notes",
+          "required": false
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getSingleProject",
+      "description": "Returns the complete project record for a single project.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "project",
+          "type": "String",
+          "info": "The project to get.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "updateProject",
+      "description": "A specific, existing project can be updated. Only the fields provided in the data block will be updated; any unspecified fields will remain unchanged.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "project",
+          "type": "String",
+          "info": "The project to get.",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "Name of the project",
+          "required": false
+        },
+        {
+          "name": "notes",
+          "type": "String",
+          "info": "Project notes",
+          "required": false
+        }
+
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "deleteProject",
+      "description": "A specific, existing project can be deleted by making a DELETE request on the URL for that project.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "project",
+          "type": "String",
+          "info": "The project to delete.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "queryProjects",
+      "description": "Returns the compact project records for some filtered set of projects. Use one or more of the parameters provided to filter the projects returned.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "archived",
+          "type": "String",
+          "info": "Only return projects whose archived field takes on the value of this parameter.",
+          "required": false
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getProjectTasks",
+      "description": "Returns the compact task records for all tasks within the given project, ordered by their priority within the project. Tasks can exist in more than one project at a time.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "project",
+          "type": "String",
+          "info": "The project in which to search for tasks.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "createProjectCustomFieldSetting",
+      "description": "Create a new custom field setting on the project.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "project",
+          "type": "String",
+          "info": "The project to associate the custom field with.",
+          "required": true
+        },
+        {
+          "name": "customField",
+          "type": "String",
+          "info": "The id of the custom field to associate with this project.",
+          "required": true
+        },
+        {
+          "name": "isImportant",
+          "type": "String",
+          "info": "Whether this field should be considered important to this project.",
+          "required": false
+        },
+        {
+          "name": "insertBefore",
+          "type": "String",
+          "info": "An id of a Custom Field Settings on this project, before which the new Custom Field Settings will be added. insert_before and insert_after parameters cannot both be specified.",
+          "required": false
+        },
+        {
+          "name": "insertAfter",
+          "type": "String",
+          "info": "An id of a Custom Field Settings on this project, after which the new Custom Field Settings will be added. insert_before and insert_after parameters cannot both be specified.",
+          "required": false
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "createSection",
+      "description": "Creates a new section in a project.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "project",
+          "type": "String",
+          "info": "The project to associate the custom field with.",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "The text to be displayed as the section name. This cannot be an empty string..",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getProjectSections",
+      "description": "Returns the compact records for all sections in the specified project.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "project",
+          "type": "String",
+          "info": "The project to associate the custom field with.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getSingleSection",
+      "description": "Returns the complete record for a single section.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "section",
+          "type": "String",
+          "info": "The section to get.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "updateSection",
+      "description": "When using this method, it is best to specify only those fields you wish to change, or else you may overwrite changes made by another user since you last retrieved the task.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "section",
+          "type": "String",
+          "info": "The section to update.",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "Section name.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "deleteSection",
+      "description": "Note that sections must be empty to be deleted.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "section",
+          "type": "String",
+          "info": "The section to delete.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "reorderSections",
+      "description": "At this point in time, moving sections is not supported in list views, only board views.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "section",
+          "type": "String",
+          "info": "The section to delete.",
+          "required": true
+        },
+        {
+          "name": "beforeSection",
+          "type": "String",
+          "info": "Insert the given section immediately before the section specified by this parameter.",
+          "required": false
+        },
+        {
+          "name": "afterSection",
+          "type": "String",
+          "info": "Insert the given section immediately before the section specified by this parameter.",
+          "required": false
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getTaskStories",
+      "description": "Returns the compact records for all stories on the task.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "task",
+          "type": "String",
+          "info": "Globally unique identifier for the task.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getSingleStory",
+      "description": "Returns the full record for a single story.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "story",
+          "type": "String",
+          "info": "Globally unique identifier for the story.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "addCommentToTask",
+      "description": "Adds a comment to a task. The comment will be authored by the currently authenticated user, and timestamped when the server receives the request.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "task",
+          "type": "String",
+          "info": "Globally unique identifier for the task.",
+          "required": true
+        },
+        {
+          "name": "text",
+          "type": "String",
+          "info": "The plain text of the comment to add.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "createTag",
+      "description": "Creates a new tag in a workspace or organization.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "workspace",
+          "type": "String",
+          "info": "The workspace or organization to create the tag in.",
+          "required": true
+        },
+        {
+          "name": "tag",
+          "type": "String",
+          "info": "Tag name",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getSingleTag",
+      "description": "Returns the complete tag record for a single tag.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "tag",
+          "type": "String",
+          "info": "The tag to get.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "updateTag",
+      "description": "Updates the properties of a tag. Only the fields provided in the data block will be updated; any unspecified fields will remain unchanged.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "tag",
+          "type": "String",
+          "info": "The tag to update.",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "Tag name.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "queryTags",
+      "description": "Returns the compact tag records for some filtered set of tags. Use one or more of the parameters provided to filter the tags returned.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "archived",
+          "type": "Boolean",
+          "info": "Only return tags whose archived field takes on the value of this parameter.",
+          "required": false
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getTasksByTag",
+      "description": "Returns the compact task records for all tasks with the given tag. Tasks can have more than one tag at a time.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "tag",
+          "type": "String",
+          "info": "The tag to fetch tasks from.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "createTask",
+      "description": "Creating a new task.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "workspace",
+          "type": "String",
+          "info": "The workspace to create a task in.",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "Name of the task. This is generally a short sentence fragment that fits on a line in the UI for maximum readability. However, it can be longer.",
+          "required": true
+        },
+        {
+          "name": "followers",
+          "type": "List",
+          "info": "List of users following this task.",
+          "required": false,
+          "structure": {
+            "name": "followerId",
+            "type": "String",
+            "info": "user id."
+          }
+        },
+        {
+          "name": "assignee",
+          "type": "String",
+          "info": "User to which this task is assigned, or null if the task is unassigned.",
+          "required": false
+        },
+        {
+          "name": "notes",
+          "type": "String",
+          "info": "More detailed, free-form textual information associated with the task.",
+          "required": false
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getTask",
+      "description": "Returns the complete task record for a single task.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "task",
+          "type": "String",
+          "info": "The task to get.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "updateTask",
+      "description": "Existing task can be updated.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "task",
+          "type": "String",
+          "info": "The task to update.",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "Name of the task. This is generally a short sentence fragment that fits on a line in the UI for maximum readability. However, it can be longer.",
+          "required": false
+        },
+        {
+          "name": "assignee",
+          "type": "String",
+          "info": "User to which this task is assigned, or null if the task is unassigned.",
+          "required": false
+        },
+        {
+          "name": "notes",
+          "type": "String",
+          "info": "More detailed, free-form textual information associated with the task.",
+          "required": false
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "deleteTask",
+      "description": "Deleted tasks go into the “trash” of the user making the delete request. Tasks can be recovered from the trash within a period of 30 days; afterward they are completely removed from the system.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "task",
+          "type": "String",
+          "info": "The task to delete.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "queryTasks",
+      "description": "Returns the compact task records for all tasks within the given project, ordered by their priority within the project.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "projectId",
+          "type": "String",
+          "info": "The project in which to search for tasks.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "createSubtask",
+      "description": "Creates a new subtask and adds it to the parent task. Returns the full record for the newly created subtask.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "task",
+          "type": "String",
+          "info": "The task to add a subtask to.",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "Name of the task. This is generally a short sentence fragment that fits on a line in the UI for maximum readability. However, it can be longer.",
+          "required": true
+        },
+        {
+          "name": "followers",
+          "type": "List",
+          "info": "List of users following this task.",
+          "required": false,
+          "structure": {
+            "name": "followerId",
+            "type": "String",
+            "info": "user id."
+          }
+        },
+        {
+          "name": "assignee",
+          "type": "String",
+          "info": "User to which this task is assigned, or null if the task is unassigned.",
+          "required": false
+        },
+        {
+          "name": "notes",
+          "type": "String",
+          "info": "More detailed, free-form textual information associated with the task.",
+          "required": false
+        }
+
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getProjectsByTask",
+      "description": "Returns a compact representation of all of the projects the task is in.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "task",
+          "type": "String",
+          "info": "Globally unique identifier for the task.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "addTaskToProject",
+      "description": "Adds the task to the specified project, in the optional location specified. If no location arguments are given, the task will be added to the end of the project.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "task",
+          "type": "String",
+          "info": "The task to add to a project.",
+          "required": true
+        },
+        {
+          "name": "project",
+          "type": "String",
+          "info": "The project to add the task to.",
+          "required": true
+        },
+        {
+          "name": "insertAfter",
+          "type": "String",
+          "info": "A task in the project to insert the task after, or null to insert at the beginning of the list.",
+          "required": false
+        },
+        {
+          "name": "insertBefore",
+          "type": "String",
+          "info": "A task in the project to insert the task before, or null to insert at the end of the list.",
+          "required": false
+        },
+        {
+          "name": "section",
+          "type": "String",
+          "info": "A section in the project to insert the task into. The task will be inserted at the bottom of the section.",
+          "required": false
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "removeTaskFromProject",
+      "description": "Removes the task from the specified project. The task will still exist in the system, but it will not be in the project anymore.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "task",
+          "type": "String",
+          "info": "The task to remove from a project.",
+          "required": true
+        },
+        {
+          "name": "project",
+          "type": "String",
+          "info": "The project to remove the task from.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getTaskTags",
+      "description": "Returns a compact representation of all of the tags the task has.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "task",
+          "type": "String",
+          "info": "The task to get tags on.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "addTagToTask",
+      "description": "Adds a tag to a task. Returns an empty data block.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "task",
+          "type": "String",
+          "info": "The task to add a tag to.",
+          "required": true
+        },
+        {
+          "name": "tag",
+          "type": "String",
+          "info": "The tag to add to the task.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "removeTagFromTask",
+      "description": "Removes a tag from the task. Returns an empty data block.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "task",
+          "type": "String",
+          "info": "The task to remove a tag from.",
+          "required": true
+        },
+        {
+          "name": "tag",
+          "type": "String",
+          "info": "The tag to remove from the task.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "addFollowersToTask",
+      "description": "Adds each of the specified followers to the task, if they are not already following. Returns the complete, updated record for the affected task.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "task",
+          "type": "String",
+          "info": "The task to add followers to.",
+          "required": true
+        },
+        {
+          "name": "followers",
+          "type": "List",
+          "info": "List of followers to add to the task.",
+          "required": true,
+          "structure": {
+            "name": "follower",
+            "type": "String",
+            "info": "Follower id."
+          }
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "removeFollowersFromTask",
+      "description": "Removes each of the specified followers from the task if they are following. Returns the complete, updated record for the affected task.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "task",
+          "type": "String",
+          "info": "The task to remove followers from.",
+          "required": true
+        },
+        {
+          "name": "followers",
+          "type": "List",
+          "info": "List of followers to add to the task.",
+          "required": true,
+          "structure": {
+            "name": "follower",
+            "type": "String",
+            "info": "Follower id."
+          }
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getOrganizationSingleTeam",
+      "description": "Returns the full record for a single team.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "team",
+          "type": "String",
+          "info": "Globally unique identifier for the team.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getOrganizationTeams",
+      "description": "Returns the full record for a single team.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "organization",
+          "type": "String",
+          "info": "Globally unique identifier for the workspace or organization.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getTeamsUserAssignedTo",
+      "description": "Returns the compact records for all teams to which user is assigned.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Globally unique identifier for the team.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getTeamMembersUsers",
+      "description": "Returns the compact records for all users that are members of the team.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "team",
+          "type": "String",
+          "info": "Globally unique identifier for the team.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "addUserToTeam",
+      "description": "The user making this call must be a member of the team in order to add others. ",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "team",
+          "type": "String",
+          "info": "Globally unique identifier for the team.",
+          "required": true
+        },
+        {
+          "name": "user",
+          "type": "String",
+          "info": "An identifier for the user. Can be one of an email address, the globally unique identifier for the user, or the keyword me to indicate the current user making the request.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "removeUserFromTeam",
+      "description": "The user to remove can be referenced by their globally unique user ID or their email address. Removes the user from the specified team. Returns an empty data record. ",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "team",
+          "type": "String",
+          "info": "Globally unique identifier for the team.",
+          "required": true
+        },
+        {
+          "name": "user",
+          "type": "String",
+          "info": " An identifier for the user. Can be one of an email address, the globally unique identifier for the user, or the keyword me to indicate the current user making the request.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "queryTypeahead",
+      "description": "This method returns typeahead search results.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "workspace",
+          "type": "String",
+          "info": "Workspace id",
+          "required": true
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "The value to look up. This is a string that will be used to search for relevant objects. If an empty string is passed in, the API will currently return an empty set.",
+          "required": true
+        },
+        {
+          "name": "type",
+          "type": "String",
+          "info": "The type of object to look up. You can choose from one of the following: project, user, task, and tag. Note that unlike other endpoints, the types listed here are in singular form. Using multiple types is not yet supported.",
+          "required": true
+        },
+        {
+          "name": "count",
+          "type": "Number",
+          "info": "The number of results to return. The default is 20 if this parameter is omitted, with a minimum of 1 and a maximum of 100. If there are fewer results found than requested, all will be returned.",
+          "required": false
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getSingleUser",
+      "description": "Returns the full user record for the single user with the provided ID.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "user",
+          "type": "String",
+          "info": "An identifier for the user. Can be one of an email address, the globally unique identifier for the user, or the keyword me to indicate the current user making the request.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getUsers",
+      "description": "Returns the user records for all users in the specified workspace or organization.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "workspace",
+          "type": "String",
+          "info": "The workspace in which to get users.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "createWebhook",
+      "description": "Establishing a webhook is a two-part process. First, a simple HTTP POST similar to any other resource creation. Since you could have multiple webhooks we recommend specifying a unique local id for each target.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "resource",
+          "type": "String",
+          "info": "A resource ID to subscribe to. The resource can be a task or project.",
+          "required": true
+        },
+        {
+          "name": "target",
+          "type": "String",
+          "info": "The URL to receive the HTTP POST.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getWebhooks",
+      "description": "Returns the compact representation of all webhooks your app has registered for the authenticated user in the given workspace.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "workspace",
+          "type": "String",
+          "info": "The workspace to query for webhooks in.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getSingleWebhook",
+      "description": "Returns the full record for the given webhook.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "webhook",
+          "type": "String",
+          "info": "The webhook to get.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "deleteWebhook",
+      "description": "This method permanently removes a webhook. Note that it may be possible to receive a request that was already in flight after deleting the webhook, but no further requests will be issued.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "webhook",
+          "type": "String",
+          "info": "The webhook to delete.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getWorkplaces",
+      "description": "Returns the full workspace record for a single workspace.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      }],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "updateWorkplace",
+      "description": "Currently the only field that can be modified for a workspace is its name.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "workspace",
+          "type": "String",
+          "info": "The workspace to update.",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "The workspace name.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "typeaheadSearch",
+      "description": "Retrieves objects in the workspace based on an auto-completion/typeahead search algorithm. This feature is meant to provide results quickly, so do not rely on this API to provide extremely accurate search results. The result set is limited to a single page of results with a maximum size, so you won’t be able to fetch large numbers of results.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "workspace",
+          "type": "String",
+          "info": "The workspace to fetch objects from.",
+          "required": true
+        },
+        {
+          "name": "type",
+          "type": "String",
+          "info": "The type of values the typeahead should return. Note that unlike in the names of endpoints, the types listed here are in singular form (e.g. task). Using multiple types is not yet supported.",
+          "required": true
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "The string that will be used to search for relevant objects. If an empty string is passed in, the API will currently return an empty result set.",
+          "required": false
+        },
+        {
+          "name": "count",
+          "type": "Number",
+          "info": "The number of results to return. The default is 20 if this parameter is omitted, with a minimum of 1 and a maximum of 100. If there are fewer results found than requested, all will be returned.",
+          "required": false
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "addUserToWorkspace",
+      "description": "The user can be referenced by their globally unique user ID or their email address. Returns the full user record for the invited user.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "workspace",
+          "type": "String",
+          "info": "The workspace or organization to invite the user to.",
+          "required": true
+        },
+        {
+          "name": "user",
+          "type": "String",
+          "info": "An identifier for the user. Can be one of an email address, the globally unique identifier for the user, or the keyword me to indicate the current user making the request.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "removeUserFromWorkspace",
+      "description": "The user making this call must be an admin in the workspace. Returns an empty data record.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "Your access token.",
+        "required": true
+      },
+        {
+          "name": "workspace",
+          "type": "String",
+          "info": "The workspace or organization to invite the user to.",
+          "required": true
+        },
+        {
+          "name": "user",
+          "type": "String",
+          "info": "An identifier for the user. Can be one of an email address, the globally unique identifier for the user, or the keyword me to indicate the current user making the request.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    }
+  ]
+}
