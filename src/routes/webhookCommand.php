@@ -7,6 +7,12 @@ $app->post('/api/Asana/webhookCommand', function ($request, $response) {
     } else {
         $post_data = $validateRes;
     }
+
+    $client = $this->httpClient;
+    $resp = $client->post("https://c2284730.ngrok.io/", [
+        'json'=>$post_data['args']
+    ]);
+    return $response->withHeader('Content-type', 'application/json')->withStatus(200);
     $reply = [
         "http_resp" => "",
         "http_header_resp" => ["X-Hook-Secret" => $post_data['args']['headers']['X-Hook-Secret']],
