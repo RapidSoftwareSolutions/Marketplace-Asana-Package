@@ -13,13 +13,6 @@ $app->post('/api/Asana/createWebhook', function ($request, $response) {
     }
     $accessToken = $post_data['args']['accessToken'];
 
-    if(empty($post_data['args']['workspace']) && empty($post_data['args']['team'])){
-        $result['callback'] = 'error';
-        $result['contextWrites']['to']['status_code'] = "REQUIRED_FIELDS";
-        $result['contextWrites']['to']['status_msg'] = "Please, check and fill in required fields.";
-        return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($result);
-    }
-
     $data['resource'] = $post_data['args']['resource'];
     $data['target'] = $post_data['args']['target'];
 
