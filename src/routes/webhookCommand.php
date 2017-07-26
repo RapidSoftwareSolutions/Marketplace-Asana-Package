@@ -8,12 +8,6 @@ $app->post('/api/Asana/webhookCommand', function ($request, $response) {
         $post_data = $validateRes;
     }
 
-    $client = $this->httpClient;
-    $resp = $client->post("https://c2284730.ngrok.io/", [
-        'json'=>$post_data
-    ]);
-
-    die();
 
     $reply = [
         "http_resp" => "",
