@@ -60,7 +60,8 @@ $routes = [
     'updateWorkplace',
     'typeaheadSearch',
     'addUserToWorkspace',
-    'removeUserFromWorkspace'
+    'removeUserFromWorkspace',
+    'webhookCommand'
 ];
 foreach($routes as $file) {
     require __DIR__ . '/../src/routes/'.$file.'.php';
