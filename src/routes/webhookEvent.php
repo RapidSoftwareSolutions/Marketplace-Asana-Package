@@ -1,5 +1,5 @@
 <?php
-$app->post('/api/Asana/webhookCommand', function ($request, $response) {
+$app->post('/api/Asana/webhookEvent', function ($request, $response) {
     $checkRequest = $this->validation;
     $validateRes = $checkRequest->validate($request, []);
     if (!empty($validateRes) && isset($validateRes['callback']) && $validateRes['callback'] == 'error') {
